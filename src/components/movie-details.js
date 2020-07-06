@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar  } from "@fortawesome/free-solid-svg-icons";
+import { faMagnet  } from "@fortawesome/free-solid-svg-icons";
+
 import "../App.css";
 import { useCookies } from "react-cookie";
 
 function MovieDetails(props) {
   let mov = props.movie;
-  const [highlighted, setHighlighted] = useState(3);
+  const [highlighted, setHighlighted] = useState(-1);
   const [token] = useCookies(["mr-token"]);
   const highlightRate = (high) => (evt) => {
     setHighlighted(high);
   };
 
   const rateClicked = (rate) => (evt) => {
-    fetch(`http://192.168.1.3:8000/api/movies/${mov.id}/rate_movie/`, {
+    fetch(`http://localhost:8000/api/movies/${mov.id}/rate_movie/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +28,7 @@ function MovieDetails(props) {
       .catch((error) => console.log(error));
   };
   const getDetails = () => {
-    fetch(`http://192.168.1.3:8000/api/movies/${mov.id}/`, {
+    fetch(`http://localhost:8000/api/movies/${mov.id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -48,6 +50,7 @@ function MovieDetails(props) {
             icon={faStar}
             className={mov.avg_rating > 0 ? "orange" : ""}
           />
+          
           <FontAwesomeIcon
             icon={faStar}
             className={mov.avg_rating > 1 ? "orange" : ""}
@@ -65,6 +68,14 @@ function MovieDetails(props) {
             className={mov.avg_rating > 4 ? "orange" : ""}
           />
           ({mov.no_of_ratings})
+          <div >
+          <FontAwesomeIcon
+            icon={faMagnet}
+            color='red' size='2x' 
+          /></div>
+          <div className="image_container">
+          <img src={mov.avatar} height='300' width='200' alt="Hello" />
+          </div >
           <div className="rate-container">
             <h2>Rate It</h2>
             {[...Array(5)].map((e, i) => {

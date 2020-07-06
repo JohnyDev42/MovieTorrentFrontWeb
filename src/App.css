@@ -13,6 +13,27 @@
   background-size: auto;
   padding: 30px;
 }
+.logo{
+  display: block;
+  animation-name: moveInTop;
+  animation-duration: 1s;
+}
+.logo:hover{
+  animation-name: moveInTop;
+  animation-duration: 10s;
+}
+
+@keyframes moveInTop{
+  0%{
+    transform: translateY(-100px);
+    opacity: 0;
+    
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .button {
   justify-content: center;
   align-items: center;
@@ -43,8 +64,11 @@ textarea {
   color: purple;
 }
 .rate-container {
+  position: static;
   border-top: 2px solid purple;
-  margin-top: 20px;
+  border-bottom: 2px dotted red;
+  top: 500px;
+  margin-top: 200px;
 }
 .movie-item {
   display: grid;
@@ -78,4 +102,11 @@ textarea {
   right: 20px;
   cursor: pointer;
   font-size: 1.5rem;
+}
+
+.image_container{
+  position: absolute;
+  top: 120px;
+  right: 100px;
+  height: 500px;
 }

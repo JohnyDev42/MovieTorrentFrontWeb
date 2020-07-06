@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -15,7 +16,7 @@ function App() {
   const [token, setToken, removeCookie] = useCookies(["mr-token"]);
 
   useEffect(() => {
-    fetch("http://192.168.1.3:8000/api/movies/", {
+    fetch("http://localhost:8000/api/movies/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +73,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>
+        <h1 className='logo'>
           <FontAwesomeIcon icon={faFilm}></FontAwesomeIcon>
           Movie Rater
         </h1>

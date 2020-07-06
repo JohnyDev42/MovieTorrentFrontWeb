@@ -1,6 +1,6 @@
 export default class API {
   static loginUser(body) {
-    return fetch(`http://192.168.1.3:8000/auth/`, {
+    return fetch(`http://localhost:8000/auth/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class API {
     }).then((resp) => resp.json());
   }
   static registerUser(body) {
-    return fetch(`http://192.168.1.3:8000/api/users/`, {
+    return fetch(`http://localhost:8000/api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export default class API {
     }).then((resp) => resp.json());
   }
   static updateMovie(mov_id, body, token) {
-    return fetch(`http://192.168.1.3:8000/api/movies/${mov_id}/`, {
+    return fetch(`http://localhost:8000/api/movies/${mov_id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export default class API {
     }).then((resp) => resp.json());
   }
   static createMovie(body, token) {
-    return fetch(`http://192.168.1.3:8000/api/movies/`, {
+    return fetch(`http://localhost:8000/api/movies/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export default class API {
     }).then((resp) => resp.json());
   }
   static deleteMovie(mov_id, token) {
-    return fetch(`http://192.168.1.3:8000/api/movies/${mov_id}`, {
+    return fetch(`http://localhost:8000/api/movies/${mov_id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -47,3 +47,5 @@ export default class API {
     });
   }
 }
+
+
